@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CardService } from '../shared/card.service';
 
 @Component({
     selector: 'app-card-deck',
@@ -7,15 +8,16 @@ import { Component } from '@angular/core';
 })
 export class CardDeckPage {
     
-    public readonly cardDecks: string[] = [
-        'Druid',
-        'Mage',
-        'Warrior',
-        'Rogue',
-        'Shaman',
-        'Priest',
-        'Warlock',
-        'Hunter',
-        'Paladin'
-    ];
+    public cardDecks: string[] = [];
+
+    constructor(private cardService: CardService) {
+        this.getCardDecks();
+    }
+
+    private getCardDecks() {
+        debugger;
+        this.cardService.getAllCardDecks().subscribe(
+            (cardDecks: string[]) => this.cardDecks = cardDecks
+        );
+    }
 }
