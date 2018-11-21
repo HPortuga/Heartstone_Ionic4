@@ -1,5 +1,7 @@
 {
   "name": "Heartstone_Ionic4",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class CardDeckPage {
     
+    public readonly cardDecks: string[] = [
+        'Druid',
+        'Mage',
+        'Warrior',
+        'Rogue',
+        'Shaman',
+        'Priest',
+        'Warlock',
+        'Hunter',
+        'Paladin'
+    ];
 }
