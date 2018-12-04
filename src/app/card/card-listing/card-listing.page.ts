@@ -2,6 +2,8 @@ import { CardService } from './../shared/card.service';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { Card } from '../shared/card.model';
+
 @Component({
   selector: 'app-card-listing',
   templateUrl: './card-listing.page.html',
@@ -10,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 export class CardListingPage {
   cardDeckGroup: string;
   cardDeck: string;
-  cards: any[] = [];
+  cards: Card[] = [];
 
   constructor(private route: ActivatedRoute,
               private cardService: CardService) { }
