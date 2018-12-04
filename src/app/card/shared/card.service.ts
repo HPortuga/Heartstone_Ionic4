@@ -8,26 +8,18 @@ import { CardDeck } from './card.model';
 export class CardService {
     private readonly HS_API_URL = 'https://omgvamp-hearthstone-v1.p.mashape.com';
     private readonly API_KEY = '8k0vwaCkVEmshAUSoKv786h3SHRZp1zYbhsjsnU6peQbZMIEjE';
-    
-    private readonly cardDecks: string[] = [
-        'Druid',
-        'Mage',
-        'Warrior',
-        'Rogue',
-        'Shaman',
-        'Priest',
-        'Warlock',
-        'Hunter',
-        'Paladin'
-    ];
+
+    private headers: HttpHeaders;
 
     constructor(private http: HttpClient) {
-
+        this.headers = new HttpHeaders({'X-Mashape-Key': this.API_KEY});
     }
 
     public getAllCardDecks(): Observable<CardDeck[]> {
-        const headers = new HttpHeaders({'X-Mashape-Key': this.API_KEY});
-        
-        return this.http.get<CardDeck[]>(`${this.HS_API_URL}/info`, {headers});
+        return this.http.get<CardDeck[]>(`${this.HS_API_URL}/info`, {headers: this.headers});
+    }
+
+    public getCardsByDeck(cardDeckGroup: string, cardDeck: string): Observable<any> {
+        return this.http.get<any[]>(`${this.HS_API_URL}/cards/${cardDeckGroup}/${cardDeck}`, {headers: this.headers});
     }
 }
