@@ -1,3 +1,4 @@
+import { CardDetailPage } from './../card/card-detail/card-detail.page';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -13,16 +14,6 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'about',
-        outlet: 'about',
-        component: AboutPage
-      },
-      {
-        path: 'contact',
-        outlet: 'contact',
-        component: ContactPage
-      },
-      {
         path: 'card',
         outlet: 'card',
         component: CardDeckPage
@@ -31,7 +22,12 @@ const routes: Routes = [
         path: 'card/:cardDeckGroup/:cardDeck',
         outlet: 'card',
         component: CardListingPage
-      }
+      },
+      {
+        path: 'card/:cardId',
+        outlet: 'card',
+        component: CardDetailPage
+      },
     ]
   },
   {
