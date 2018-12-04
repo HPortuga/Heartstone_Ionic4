@@ -27,7 +27,7 @@ export class CardService {
 
     public getAllCardDecks(): Observable<CardDeck[]> {
         const headers = new HttpHeaders({'X-Mashape-Key': this.API_KEY});
-
+        
         return this.http.get<CardDeck[]>(`${this.HS_API_URL}/info`, {headers});
     }
 }
