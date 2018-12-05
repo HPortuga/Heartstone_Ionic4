@@ -2,6 +2,9 @@
     <ion-toolbar>
         <ion-title>{{card?.name}}</ion-title>
     </ion-toolbar>
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
 </ion-header>
 
 <ion-content padding>
@@ -13,7 +16,10 @@
                 <p [innerHTML]="card?.text"></p>
                 <p>{{card?.flavour}}</p>
 
-                <ion-card-title>Stats</ion-card-title>
+                <ion-card-title>
+                    <span class="card-stats-title">Stats</span>
+                </ion-card-title>
+
                 <p *ngIf="card.health"><b>Health: </b> {{card?.health}}</p>
                 <p *ngIf="card.attack"><b>Attack: </b> {{card?.attack}}</p>
                 <p *ngIf="card.faction"><b>Faction: </b> {{card?.faction}}</p>
