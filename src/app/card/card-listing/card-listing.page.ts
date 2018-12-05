@@ -23,7 +23,10 @@ export class CardListingPage {
 
     this.cardService.getCardsByDeck(this.cardDeckGroup, this.cardDeck)
       .subscribe((cards) => {
-          this.cards = cards;
+          this.cards = cards.map((card: Card) => {
+            card.text = this.cardService.replaceCardTextLine(card.text);
+            return card;
+        });
       });
   }
 }

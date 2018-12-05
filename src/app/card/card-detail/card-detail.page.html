@@ -10,7 +10,7 @@
             <img [src]="card.img" (error)="updateImage($event)">
             <ion-card-content>
                 <ion-card-title>{{card.name}}</ion-card-title>
-                <p>{{card?.text}}</p>
+                <p [innerHTML]="card?.text"></p>
                 <p>{{card?.flavour}}</p>
 
                 <ion-card-title>Stats</ion-card-title>

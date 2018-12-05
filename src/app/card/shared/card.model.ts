@@ -19,4 +19,5 @@ export interface Card {
     faction: string;
     platerClass: string;
     locale: string;
+    text: string;
 }
