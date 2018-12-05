@@ -1,4 +1,4 @@
-import { LoadingController } from '@ionic/angular';
+import { LoaderService } from './../../shared/service/loader.service';
 import { Card } from './../shared/card.model';
 import { CardService } from './../shared/card.service';
 import { ActivatedRoute } from '@angular/router';
@@ -11,16 +11,15 @@ import { Component } from '@angular/core';
 })
 export class CardDetailPage {
     card: Card;
-    loader: any;
 
     constructor(private route: ActivatedRoute,
         private cardService: CardService,
-        private loadingCtrl: LoadingController) { }
+        private loaderService: LoaderService) { }
 
-    async ionViewWillEnter() {
+    ionViewWillEnter() {
         const cardId = this.route.snapshot.paramMap.get('cardId');
 
-        this.loader = await this.presentLoading();
+        this.loaderService.presentLoading();
         this.cardService.getCardById(cardId)
             .subscribe((card: Card[]) => {
                 this.card = card.map((card: Card) => {
@@ -28,21 +27,11 @@ export class CardDetailPage {
                     return card;
                 })[0];
 
-                this.loader.dismiss();
+                this.loaderService.dismissLoading();
             });
     }
 
     updateImage() {
         this.card.img = 'assets/image/DefaultCard.png';
-    }
-
-    private async presentLoading() {
-        const loader = await this.loadingCtrl.create({
-            message: 'Loading...',
-            translucent: true
-        });
-        loader.present();
-
-        return loader;
     }
 }

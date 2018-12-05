@@ -1,3 +1,4 @@
+import { LoaderService } from './../shared/service/loader.service';
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -14,12 +15,12 @@ import { CardDetailPage } from './card-detail/card-detail.page';
         CommonModule,
         HttpClientModule        
     ],
-    providers: [CardService],
+    providers: [CardService, LoaderService],
     declarations: [
         CardDeckPage,
         CardListComponent,
         CardListingPage,
-        CardDetailPage
+        CardDetailPage,
     ]
 })
 export class CardPageModule {}
